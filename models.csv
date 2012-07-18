@@ -1,0 +1,4 @@
+User,email,password_digest,first_name,last_name
+Lesson,name,embed_code,user_id:integer,
+Question,content:text,lesson_id:integer,,
+Vote,question_id:integer,user_id:integer,,
