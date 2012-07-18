@@ -5,6 +5,7 @@ class LayoutModifier
   def initialize(app_name = "MyApp")
     @app_name = app_name
   end
+  
   def remove_sidebar
     puts "Removing sidebar."
 

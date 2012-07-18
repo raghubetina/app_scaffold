@@ -3,6 +3,7 @@ require './model_generator.rb'
 require './bootstrap_installer.rb'
 require './user_modifier.rb'
 require './layout_modifier.rb'
+require './association_builder.rb'
 
 app_name = ARGV[0] || "MyApp"
 layout_name = ARGV[1] || "fixed"
@@ -35,5 +36,8 @@ l.remove_sidebar
 l.expand_main_div
 l.fix_nav_bar_links
 l.fix_misc
+
+a = AssociationBuilder.new(app_name)
+a.build_associations
 
 Dir.chdir(app_name) { `rails s` }
