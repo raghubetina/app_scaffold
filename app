@@ -6,7 +6,7 @@ require './layout_modifier.rb'
 require './association_builder.rb'
 
 # This downcase hack is to prevent mixed-case app name errors.
-app_name = ARGV[0].downcase || "myapp"
+app_name = ARGV[0] ? ARGV[0].downcase.gsub('_', '') : "myapp"
 layout_name = ARGV[1] || "fixed"
 
 puts "Creating #{app_name} app."
