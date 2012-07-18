@@ -42,7 +42,7 @@ class AssociationBuilder
           #TODO: Reading and/or writing need to be refactored into method.
           model_show = IO.readlines("#{@app_name}/app/views/#{model.pluralize.downcase}/show.html.erb")
           foreign_key_label_pos = model_show.map(&:strip).index("<dd><%= @#{model.downcase}.#{foreign_key}_id %></dd>")
-          model_show[foreign_key_label_pos] = "  <dd><%= @#{model.downcase}.#{foreign_key}.#{descriptor} %></dd>"
+          model_show[foreign_key_label_pos] = "  <dd><%= @#{model.downcase}.#{foreign_key} ? @#{model.downcase}.#{foreign_key}.#{descriptor} : nil %></dd>"
           f = File.new("#{@app_name}/app/views/#{model.pluralize.downcase}/show.html.erb", 'w')
           model_show.each { |line| f.puts line }
           f.close
@@ -51,7 +51,7 @@ class AssociationBuilder
 
           model_index = IO.readlines("#{@app_name}/app/views/#{model.pluralize.downcase}/index.html.erb")
           foreign_key_td_pos = model_index.map(&:strip).index("<td><%= #{model.downcase}.#{foreign_key}_id %></td>")
-          model_index[foreign_key_td_pos] = "        <td><%= #{model.downcase}.#{foreign_key}.#{descriptor} %></td>"
+          model_index[foreign_key_td_pos] = "        <td><%= #{model.downcase}.#{foreign_key} ? #{model.downcase}.#{foreign_key}.#{descriptor} : nil %></td>"
           f = File.new("#{@app_name}/app/views/#{model.pluralize.downcase}/index.html.erb", 'w')
           model_index.each { |line| f.puts line }
           f.close

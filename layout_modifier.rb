@@ -39,7 +39,8 @@ class LayoutModifier
 
     footer_pos = application.map(&:strip).index("<p>&copy; Company 2012</p>")
     application[footer_pos] = "        <p>&copy; #{@app_name} 2012</p>"
-
+    
+    #TODO: Capitalize breaks on mixed case app names.
     brand_pos = application.map(&:strip).index("<a class=\"brand\" href=\"#\">#{@app_name.capitalize}</a>")
     application[brand_pos] = "          <a class=\"brand\" href=\"<%= root_url %>\">#{@app_name.capitalize}</a>"
 
