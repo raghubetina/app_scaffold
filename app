@@ -42,5 +42,5 @@ l.fix_misc
 a = AssociationBuilder.new(app_name)
 a.build_associations
 a.fix_index
-a.fix_show
+# a.fix_show
 # Dir.chdir(app_name) { `rails s` }

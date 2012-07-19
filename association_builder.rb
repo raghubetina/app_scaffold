@@ -115,4 +115,4 @@ class AssociationBuilder
        # end
 end
 
-AssociationBuilder.new("hockey").fix_index
+# AssociationBuilder.new("hockey").fix_index
