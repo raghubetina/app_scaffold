@@ -10,6 +10,7 @@ app_name = ARGV[0] ? ARGV[0].downcase.gsub('_', '') : "myapp"
 layout_name = ARGV[1] || "fixed"
 
 puts "Creating #{app_name} app."
+`rm -rf #{app_name}`
 `rails new #{app_name}`
 
 g = GemfileModifier.new(app_name)
@@ -40,5 +41,6 @@ l.fix_misc
 
 a = AssociationBuilder.new(app_name)
 a.build_associations
-
-Dir.chdir(app_name) { `rails s` }
+a.fix_index
+a.fix_show
+# Dir.chdir(app_name) { `rails s` }

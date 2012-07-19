@@ -1,6 +1,6 @@
 require 'test/unit'
 require 'csv'
-require 'redgreen'
+# require 'redgreen'
 require './domain_modeler'
 
 
@@ -24,5 +24,7 @@ class DomainModelerTest < Test::Unit::TestCase
     assert_equal([:lessons, :votes].sort, modeler[:user].has_many)
   end
   
-  
+  def test_path
+    assert_equal("myapp/app/models/lesson.rb", modeler[:lesson].path("myapp"))
+  end
 end

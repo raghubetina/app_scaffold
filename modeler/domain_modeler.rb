@@ -1,5 +1,5 @@
 require 'active_support/inflector'
-require './rails_model'
+require './modeler/rails_model'
 
 class DomainModeler
   
@@ -16,7 +16,9 @@ class DomainModeler
   end
   
   def each
-    @models.each
+    @models.each do |model|
+      yield model
+    end
   end
   
   def [](model_name)
