@@ -1,5 +1,5 @@
 require 'active_support/inflector'
-require './modeler/rails_model'
+require_relative 'rails_model'
 
 class DomainModeler
   
