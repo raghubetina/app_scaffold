@@ -6,42 +6,53 @@ class AssociationBuilder
   def initialize(app_name = "MyApp")
     @app_name = app_name
   end
+
+  def models
+    @models ||= DomainModeler.new('models.csv')
+  end
+  
+  def debug_mode?
+    ARGV.empty?
+  end
+  
+  def modify_file(path)
+    puts "Modifying: #{path}" if debug_mode?
+    
+    lines = IO.readlines(path)
+    yield lines
+    IO.write(filename, lines.join("\n"))
+    
+    puts lines if debug_mode?
+  end
   
   def association_line(model, relationship)
     symbols = model.send(relationship)
     "  #{relationship} #{symbols.map { |x| ":#{x}" }.join(', ')}" if symbols.any?
-  end
-  
-  def writelines(filename, lines)
-    IO.write(filename, lines.join("\n"))
-  end
+  end  
   
   def build_associations
     puts "Building associations."
-    models = DomainModeler.new('models.csv')
+
     models.each do |model|
-      model_file = IO.readlines(model.class_path(@app_name))
-      [:belongs_to, :has_many].each do |assoc|
-        model_file.insert(1, association_line(model, assoc))
+      modify_file model.class_path(@app_name) do |model_file|
+        [:belongs_to, :has_many].each do |assoc|
+          model_file.insert(-2, association_line(model, assoc))
+        end
       end
-      puts model_file.compact
-      writelines(model.class_path(@app_name), model_file.compact)
     end
   end
   
   def fix_index
     puts "Fixing associated index templates."
     
-    models = DomainModeler.new('models.csv')
     models.each do |model|
-      model_index = IO.readlines(model.index_path(@app_name))
-      model.belongs_to.each do |bt|
-        descriptor = models[bt].columns.first.name
-         
-        bt_pos = model_index.map(&:strip).index("<td><%= #{model.name.downcase}.#{bt}_id %></td>")
-        model_index[bt_pos] = "        <td><%= #{model.name.downcase}.#{bt}.#{descriptor} if #{model.name.downcase}.#{bt} %></td>"
+      modify_file model.index_path(@app_name) do |model_index|
+        model.belongs_to.each do |bt|
+          descriptor = models[bt].columns.first.name
+          bt_pos = model_index.map(&:strip).index("<td><%= #{model.name.downcase}.#{bt}_id %></td>")
+          model_index[bt_pos] = "        <td><%= #{model.name.downcase}.#{bt}.#{descriptor} if #{model.name.downcase}.#{bt} %></td>"
+        end
       end
-      writelines(model.index_path(@app_name), model_index.compact)
     end
   end
      # 
@@ -115,4 +126,4 @@ class AssociationBuilder
        # end
 end
 
-# AssociationBuilder.new("hockey").fix_index
+# AssociationBuilder.new("hockey").build_associations

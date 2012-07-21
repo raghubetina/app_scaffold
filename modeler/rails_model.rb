@@ -1,5 +1,6 @@
 require 'active_support/inflector'
-require './modeler/rails_column'
+require_relative 'rails_column'
+
 class RailsModel
 
   attr_reader :name
