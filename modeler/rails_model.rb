@@ -27,6 +27,10 @@ class RailsModel
     @show_path ||= File.join(app_root, "app", "views", name.pluralize.underscore, "show.html.erb")
   end
   
+  def form_path(app_root)
+    @show_path ||= File.join(app_root, "app", "views", name.pluralize.underscore, "_form.html.erb")
+  end
+  
   def initialize(name, columns)
     @name = name.strip.classify
     @columns = columns.compact.map { |c| RailsColumn.new(c) }

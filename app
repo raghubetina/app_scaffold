@@ -42,5 +42,11 @@ l.fix_misc
 a = AssociationBuilder.new(app_name)
 a.build_associations
 a.fix_index
-# a.fix_show
-# Dir.chdir(app_name) { `rails s` }
+a.fix_show
+a.fix_form
+
+`cp seeds.rb #{app_name}/db/`
+Dir.chdir(app_name) { `rake db:seed` }
+Dir.chdir(app_name) { `rails s` }
+
+
