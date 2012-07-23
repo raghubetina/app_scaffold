@@ -20,7 +20,7 @@ class AssociationBuilder
     
     lines = IO.readlines(path)
     yield lines
-    IO.write(path, lines.join("\n"))
+    IO.write(path, lines.compact.join("\n"))
     
     puts lines if debug_mode?
   end
