@@ -1,0 +1,597 @@
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+  [1m[36m (0.1ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (1.0ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_list("schema_migrations")[0m
+  [1m[35m (1.0ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to CreateDirectors (20120723232047)
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.4ms)[0m  [1mCREATE TABLE "directors" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "dob" date, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20120723232047')
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+Migrating to CreateMovies (20120723232049)
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.3ms)[0m  [1mCREATE TABLE "movies" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "year" varchar(255), "director_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20120723232049')
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+Migrating to CreateCharacters (20120723232052)
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.3ms)[0m  [1mCREATE TABLE "characters" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "movie_id" integer, "actor_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20120723232052')
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+Migrating to CreateActors (20120723232054)
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.3ms)[0m  [1mCREATE TABLE "actors" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "dob" date, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20120723232054')
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+Migrating to CreateUsers (20120723232057)
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.3ms)[0m  [1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "email" varchar(255), "password_digest" varchar(255), "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20120723232057')
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+Migrating to CreateFavorites (20120723232059)
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.4ms)[0m  [1mCREATE TABLE "favorites" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "movie_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20120723232059')
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.3ms)[0m  select sqlite_version(*)
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("actors")
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_list("characters")[0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("directors")
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_list("favorites")[0m
+  [1m[35m (0.0ms)[0m  PRAGMA index_list("movies")
+  [1m[36m (0.0ms)[0m  [1mPRAGMA index_list("users")[0m
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35mDirector Load (0.1ms)[0m  SELECT "directors".* FROM "directors" 
+  [1m[36mMovie Load (0.1ms)[0m  [1mSELECT "movies".* FROM "movies" [0m
+  [1m[35mActor Load (0.1ms)[0m  SELECT "actors".* FROM "actors" 
+  [1m[36mCharacter Load (0.1ms)[0m  [1mSELECT "characters".* FROM "characters" [0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (5.0ms)[0m  [1mINSERT INTO "directors" ("created_at", "dob", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Mon, 23 Jul 2012 23:21:23 UTC +00:00], ["dob", Fri, 07 Apr 1939], ["name", "Francis Ford Coppola"], ["updated_at", Mon, 23 Jul 2012 23:21:23 UTC +00:00]]
+  [1m[35m (1.0ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "directors" ("created_at", "dob", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Mon, 23 Jul 2012 23:21:23 UTC +00:00], ["dob", Thu, 30 Jul 1970], ["name", "Christopher Nolan"], ["updated_at", Mon, 23 Jul 2012 23:21:23 UTC +00:00]]
+  [1m[36m (0.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "directors" ("created_at", "dob", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Mon, 23 Jul 2012 23:21:23 UTC +00:00], ["dob", Thu, 29 Jan 1959], ["name", "Frank Darabont"], ["updated_at", Mon, 23 Jul 2012 23:21:23 UTC +00:00]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36mDirector Load (0.2ms)[0m  [1mSELECT "directors".* FROM "directors" WHERE "directors"."name" = 'Francis Ford Coppola' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "movies" ("created_at", "director_id", "title", "updated_at", "year") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Mon, 23 Jul 2012 23:21:23 UTC +00:00], ["director_id", 1], ["title", "The Godfather"], ["updated_at", Mon, 23 Jul 2012 23:21:23 UTC +00:00], ["year", "1972"]]
+  [1m[35m (1.0ms)[0m  commit transaction
+  [1m[36mDirector Load (0.2ms)[0m  [1mSELECT "directors".* FROM "directors" WHERE "directors"."name" = 'Francis Ford Coppola' LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "movies" ("created_at", "director_id", "title", "updated_at", "year") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Mon, 23 Jul 2012 23:21:23 UTC +00:00], ["director_id", 1], ["title", "The Godfather: Part II"], ["updated_at", Mon, 23 Jul 2012 23:21:23 UTC +00:00], ["year", "1974"]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36mDirector Load (0.1ms)[0m  [1mSELECT "directors".* FROM "directors" WHERE "directors"."name" = 'Frank Darabont' LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "movies" ("created_at", "director_id", "title", "updated_at", "year") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Mon, 23 Jul 2012 23:21:23 UTC +00:00], ["director_id", 3], ["title", "The Shawshank Redemption"], ["updated_at", Mon, 23 Jul 2012 23:21:23 UTC +00:00], ["year", "1994"]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36mDirector Load (0.1ms)[0m  [1mSELECT "directors".* FROM "directors" WHERE "directors"."name" = 'Christopher Nolan' LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "movies" ("created_at", "director_id", "title", "updated_at", "year") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", Mon, 23 Jul 2012 23:21:23 UTC +00:00], ["director_id", 2], ["title", "The Dark Knight"], ["updated_at", Mon, 23 Jul 2012 23:21:23 UTC +00:00], ["year", "1972"]]
+  [1m[35m (0.7ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "actors" ("created_at", "dob", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Mon, 23 Jul 2012 23:21:23 UTC +00:00], ["dob", Wed, 30 Jan 1974], ["name", "Christian Bale"], ["updated_at", Mon, 23 Jul 2012 23:21:23 UTC +00:00]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "actors" ("created_at", "dob", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Mon, 23 Jul 2012 23:21:23 UTC +00:00], ["dob", Thu, 25 Apr 1940], ["name", "Al Pacino"], ["updated_at", Mon, 23 Jul 2012 23:21:23 UTC +00:00]]
+  [1m[35m (0.8ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "actors" ("created_at", "dob", "name", "updated_at") VALUES (?, ?, ?, ?)  [["created_at", Mon, 23 Jul 2012 23:21:23 UTC +00:00], ["dob", Thu, 16 Oct 1958], ["name", "Tim Robbins"], ["updated_at", Mon, 23 Jul 2012 23:21:23 UTC +00:00]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "actors" ("created_at", "dob", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", Mon, 23 Jul 2012 23:21:23 UTC +00:00], ["dob", Tue, 01 Jun 1937], ["name", "Morgan Freeman"], ["updated_at", Mon, 23 Jul 2012 23:21:23 UTC +00:00]]
+  [1m[35m (0.9ms)[0m  commit transaction
+  [1m[36mMovie Load (0.2ms)[0m  [1mSELECT "movies".* FROM "movies" WHERE "movies"."title" = 'The Dark Knight' LIMIT 1[0m
+  [1m[35mActor Load (0.1ms)[0m  SELECT "actors".* FROM "actors" WHERE "actors"."name" = 'Christian Bale' LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "characters" ("actor_id", "created_at", "movie_id", "name", "updated_at") VALUES (?, ?, ?, ?, ?)  [["actor_id", 1], ["created_at", Mon, 23 Jul 2012 23:21:23 UTC +00:00], ["movie_id", 4], ["name", "Bruce Wayne"], ["updated_at", Mon, 23 Jul 2012 23:21:23 UTC +00:00]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  [1m[35mMovie Load (0.2ms)[0m  SELECT "movies".* FROM "movies" WHERE "movies"."title" = 'The Godfather' LIMIT 1
+  [1m[36mActor Load (0.1ms)[0m  [1mSELECT "actors".* FROM "actors" WHERE "actors"."name" = 'Al Pacino' LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "characters" ("actor_id", "created_at", "movie_id", "name", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["actor_id", 2], ["created_at", Mon, 23 Jul 2012 23:21:23 UTC +00:00], ["movie_id", 1], ["name", "Michael Corleone"], ["updated_at", Mon, 23 Jul 2012 23:21:23 UTC +00:00]]
+  [1m[35m (0.7ms)[0m  commit transaction
+  [1m[36mMovie Load (0.1ms)[0m  [1mSELECT "movies".* FROM "movies" WHERE "movies"."title" = 'The Shawshank Redemption' LIMIT 1[0m
+  [1m[35mActor Load (0.1ms)[0m  SELECT "actors".* FROM "actors" WHERE "actors"."name" = 'Tim Robbins' LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "characters" ("actor_id", "created_at", "movie_id", "name", "updated_at") VALUES (?, ?, ?, ?, ?)  [["actor_id", 3], ["created_at", Mon, 23 Jul 2012 23:21:23 UTC +00:00], ["movie_id", 3], ["name", "Andy Dufresne"], ["updated_at", Mon, 23 Jul 2012 23:21:23 UTC +00:00]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+  [1m[35mMovie Load (0.1ms)[0m  SELECT "movies".* FROM "movies" WHERE "movies"."title" = 'The Shawshank Redemption' LIMIT 1
+  [1m[36mActor Load (0.1ms)[0m  [1mSELECT "actors".* FROM "actors" WHERE "actors"."name" = 'Morgan Freeman' LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "characters" ("actor_id", "created_at", "movie_id", "name", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["actor_id", 4], ["created_at", Mon, 23 Jul 2012 23:21:23 UTC +00:00], ["movie_id", 3], ["name", "Red Redding"], ["updated_at", Mon, 23 Jul 2012 23:21:23 UTC +00:00]]
+  [1m[35m (0.8ms)[0m  commit transaction
+
+
+Started GET "/" for 127.0.0.1 at 2012-07-23 18:21:33 -0500
+Connecting to database specified by database.yml
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT "users".* FROM "users" [0m
+  Rendered users/index.html.erb within layouts/application (38.2ms)
+Compiled bootstrap_and_overrides.css  (631ms)  (pid 19210)
+Compiled application.css  (640ms)  (pid 19210)
+Compiled jquery.js  (2ms)  (pid 19210)
+Compiled jquery_ujs.js  (0ms)  (pid 19210)
+Compiled twitter/bootstrap/bootstrap-transition.js  (0ms)  (pid 19210)
+Compiled twitter/bootstrap/bootstrap-alert.js  (0ms)  (pid 19210)
+Compiled twitter/bootstrap/bootstrap-modal.js  (0ms)  (pid 19210)
+Compiled twitter/bootstrap/bootstrap-dropdown.js  (0ms)  (pid 19210)
+Compiled twitter/bootstrap/bootstrap-scrollspy.js  (0ms)  (pid 19210)
+Compiled twitter/bootstrap/bootstrap-tab.js  (0ms)  (pid 19210)
+Compiled twitter/bootstrap/bootstrap-tooltip.js  (0ms)  (pid 19210)
+Compiled twitter/bootstrap/bootstrap-popover.js  (0ms)  (pid 19210)
+Compiled twitter/bootstrap/bootstrap-button.js  (0ms)  (pid 19210)
+Compiled twitter/bootstrap/bootstrap-collapse.js  (0ms)  (pid 19210)
+Compiled twitter/bootstrap/bootstrap-carousel.js  (0ms)  (pid 19210)
+Compiled twitter/bootstrap/bootstrap-typeahead.js  (0ms)  (pid 19210)
+Compiled twitter/bootstrap.js  (179ms)  (pid 19210)
+Compiled actors.js  (38ms)  (pid 19210)
+Compiled bootstrap.js  (2ms)  (pid 19210)
+Compiled characters.js  (0ms)  (pid 19210)
+Compiled directors.js  (0ms)  (pid 19210)
+Compiled favorites.js  (0ms)  (pid 19210)
+Compiled movies.js  (0ms)  (pid 19210)
+Compiled users.js  (0ms)  (pid 19210)
+Compiled application.js  (398ms)  (pid 19210)
+Completed 200 OK in 1256ms (Views: 1235.3ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-07-23 18:21:34 -0500
+Served asset /application.css - 304 Not Modified (44ms)
+
+
+Started GET "/assets/bootstrap_and_overrides.css?body=1" for 127.0.0.1 at 2012-07-23 18:21:34 -0500
+Served asset /bootstrap_and_overrides.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-07-23 18:21:34 -0500
+Served asset /jquery_ujs.js - 304 Not Modified (4ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-07-23 18:21:34 -0500
+Served asset /jquery.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-alert.js?body=1" for 127.0.0.1 at 2012-07-23 18:21:34 -0500
+Served asset /twitter/bootstrap/bootstrap-alert.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-transition.js?body=1" for 127.0.0.1 at 2012-07-23 18:21:34 -0500
+Served asset /twitter/bootstrap/bootstrap-transition.js - 304 Not Modified (4ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-modal.js?body=1" for 127.0.0.1 at 2012-07-23 18:21:34 -0500
+Served asset /twitter/bootstrap/bootstrap-modal.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-dropdown.js?body=1" for 127.0.0.1 at 2012-07-23 18:21:34 -0500
+Served asset /twitter/bootstrap/bootstrap-dropdown.js - 304 Not Modified (5ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tooltip.js?body=1" for 127.0.0.1 at 2012-07-23 18:21:34 -0500
+Served asset /twitter/bootstrap/bootstrap-tooltip.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tab.js?body=1" for 127.0.0.1 at 2012-07-23 18:21:34 -0500
+Served asset /twitter/bootstrap/bootstrap-tab.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-scrollspy.js?body=1" for 127.0.0.1 at 2012-07-23 18:21:34 -0500
+Served asset /twitter/bootstrap/bootstrap-scrollspy.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-popover.js?body=1" for 127.0.0.1 at 2012-07-23 18:21:34 -0500
+Served asset /twitter/bootstrap/bootstrap-popover.js - 304 Not Modified (4ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-button.js?body=1" for 127.0.0.1 at 2012-07-23 18:21:34 -0500
+Served asset /twitter/bootstrap/bootstrap-button.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-collapse.js?body=1" for 127.0.0.1 at 2012-07-23 18:21:34 -0500
+Served asset /twitter/bootstrap/bootstrap-collapse.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-carousel.js?body=1" for 127.0.0.1 at 2012-07-23 18:21:34 -0500
+Served asset /twitter/bootstrap/bootstrap-carousel.js - 304 Not Modified (5ms)
+
+
+Started GET "/assets/twitter/bootstrap.js?body=1" for 127.0.0.1 at 2012-07-23 18:21:34 -0500
+Served asset /twitter/bootstrap.js - 304 Not Modified (27ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-typeahead.js?body=1" for 127.0.0.1 at 2012-07-23 18:21:34 -0500
+Served asset /twitter/bootstrap/bootstrap-typeahead.js - 304 Not Modified (4ms)
+
+
+Started GET "/assets/actors.js?body=1" for 127.0.0.1 at 2012-07-23 18:21:34 -0500
+Served asset /actors.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/bootstrap.js?body=1" for 127.0.0.1 at 2012-07-23 18:21:34 -0500
+Served asset /bootstrap.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/characters.js?body=1" for 127.0.0.1 at 2012-07-23 18:21:34 -0500
+Served asset /characters.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/directors.js?body=1" for 127.0.0.1 at 2012-07-23 18:21:34 -0500
+Served asset /directors.js - 304 Not Modified (41ms)
+
+
+Started GET "/assets/favorites.js?body=1" for 127.0.0.1 at 2012-07-23 18:21:34 -0500
+Served asset /favorites.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/movies.js?body=1" for 127.0.0.1 at 2012-07-23 18:21:34 -0500
+Served asset /movies.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2012-07-23 18:21:34 -0500
+Served asset /users.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-07-23 18:21:34 -0500
+Served asset /application.js - 304 Not Modified (25ms)
+
+
+Started GET "/actors" for 127.0.0.1 at 2012-07-23 18:21:36 -0500
+Processing by ActorsController#index as HTML
+  [1m[35mActor Load (0.1ms)[0m  SELECT "actors".* FROM "actors" 
+DEPRECATION WARNING: :confirm option is deprecated and will be removed from Rails 4.0. Use ':data => { :confirm => 'Text' }' instead. (called from block in _app_views_actors_index_html_erb__349773291943071916_70115305414540 at /Users/rbetina/dev/app_scaffold/test1/app/views/actors/index.html.erb:49)
+DEPRECATION WARNING: :confirm option is deprecated and will be removed from Rails 4.0. Use ':data => { :confirm => 'Text' }' instead. (called from block in _app_views_actors_index_html_erb__349773291943071916_70115305414540 at /Users/rbetina/dev/app_scaffold/test1/app/views/actors/index.html.erb:49)
+DEPRECATION WARNING: :confirm option is deprecated and will be removed from Rails 4.0. Use ':data => { :confirm => 'Text' }' instead. (called from block in _app_views_actors_index_html_erb__349773291943071916_70115305414540 at /Users/rbetina/dev/app_scaffold/test1/app/views/actors/index.html.erb:49)
+DEPRECATION WARNING: :confirm option is deprecated and will be removed from Rails 4.0. Use ':data => { :confirm => 'Text' }' instead. (called from block in _app_views_actors_index_html_erb__349773291943071916_70115305414540 at /Users/rbetina/dev/app_scaffold/test1/app/views/actors/index.html.erb:49)
+  Rendered actors/index.html.erb within layouts/application (13.7ms)
+Completed 200 OK in 42ms (Views: 30.9ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-07-23 18:21:36 -0500
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap_and_overrides.css?body=1" for 127.0.0.1 at 2012-07-23 18:21:36 -0500
+Served asset /bootstrap_and_overrides.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-07-23 18:21:36 -0500
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-07-23 18:21:36 -0500
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-transition.js?body=1" for 127.0.0.1 at 2012-07-23 18:21:36 -0500
+Served asset /twitter/bootstrap/bootstrap-transition.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-alert.js?body=1" for 127.0.0.1 at 2012-07-23 18:21:36 -0500
+Served asset /twitter/bootstrap/bootstrap-alert.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-modal.js?body=1" for 127.0.0.1 at 2012-07-23 18:21:36 -0500
+Served asset /twitter/bootstrap/bootstrap-modal.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-dropdown.js?body=1" for 127.0.0.1 at 2012-07-23 18:21:36 -0500
+Served asset /twitter/bootstrap/bootstrap-dropdown.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-scrollspy.js?body=1" for 127.0.0.1 at 2012-07-23 18:21:36 -0500
+Served asset /twitter/bootstrap/bootstrap-scrollspy.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-popover.js?body=1" for 127.0.0.1 at 2012-07-23 18:21:36 -0500
+Served asset /twitter/bootstrap/bootstrap-popover.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tooltip.js?body=1" for 127.0.0.1 at 2012-07-23 18:21:36 -0500
+Served asset /twitter/bootstrap/bootstrap-tooltip.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-button.js?body=1" for 127.0.0.1 at 2012-07-23 18:21:36 -0500
+Served asset /twitter/bootstrap/bootstrap-button.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tab.js?body=1" for 127.0.0.1 at 2012-07-23 18:21:36 -0500
+Served asset /twitter/bootstrap/bootstrap-tab.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-collapse.js?body=1" for 127.0.0.1 at 2012-07-23 18:21:36 -0500
+Served asset /twitter/bootstrap/bootstrap-collapse.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-carousel.js?body=1" for 127.0.0.1 at 2012-07-23 18:21:36 -0500
+Served asset /twitter/bootstrap/bootstrap-carousel.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-typeahead.js?body=1" for 127.0.0.1 at 2012-07-23 18:21:36 -0500
+Served asset /twitter/bootstrap/bootstrap-typeahead.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap.js?body=1" for 127.0.0.1 at 2012-07-23 18:21:36 -0500
+Served asset /twitter/bootstrap.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/actors.js?body=1" for 127.0.0.1 at 2012-07-23 18:21:36 -0500
+Served asset /actors.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/characters.js?body=1" for 127.0.0.1 at 2012-07-23 18:21:36 -0500
+Served asset /characters.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap.js?body=1" for 127.0.0.1 at 2012-07-23 18:21:36 -0500
+Served asset /bootstrap.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/directors.js?body=1" for 127.0.0.1 at 2012-07-23 18:21:36 -0500
+Served asset /directors.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/favorites.js?body=1" for 127.0.0.1 at 2012-07-23 18:21:36 -0500
+Served asset /favorites.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/movies.js?body=1" for 127.0.0.1 at 2012-07-23 18:21:36 -0500
+Served asset /movies.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2012-07-23 18:21:36 -0500
+Served asset /users.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-07-23 18:21:36 -0500
+Served asset /application.js - 304 Not Modified (1ms)
+
+
+Started GET "/characters" for 127.0.0.1 at 2012-07-23 18:21:37 -0500
+Processing by CharactersController#index as HTML
+  [1m[36mCharacter Load (0.1ms)[0m  [1mSELECT "characters".* FROM "characters" [0m
+  [1m[35mMovie Load (0.2ms)[0m  SELECT "movies".* FROM "movies" WHERE "movies"."id" = 4 LIMIT 1
+  [1m[36mActor Load (0.2ms)[0m  [1mSELECT "actors".* FROM "actors" WHERE "actors"."id" = 1 LIMIT 1[0m
+DEPRECATION WARNING: :confirm option is deprecated and will be removed from Rails 4.0. Use ':data => { :confirm => 'Text' }' instead. (called from block in _app_views_characters_index_html_erb___1524780788942961232_70115297395240 at /Users/rbetina/dev/app_scaffold/test1/app/views/characters/index.html.erb:53)
+  [1m[35mMovie Load (0.2ms)[0m  SELECT "movies".* FROM "movies" WHERE "movies"."id" = 1 LIMIT 1
+  [1m[36mActor Load (0.1ms)[0m  [1mSELECT "actors".* FROM "actors" WHERE "actors"."id" = 2 LIMIT 1[0m
+DEPRECATION WARNING: :confirm option is deprecated and will be removed from Rails 4.0. Use ':data => { :confirm => 'Text' }' instead. (called from block in _app_views_characters_index_html_erb___1524780788942961232_70115297395240 at /Users/rbetina/dev/app_scaffold/test1/app/views/characters/index.html.erb:53)
+  [1m[35mMovie Load (0.1ms)[0m  SELECT "movies".* FROM "movies" WHERE "movies"."id" = 3 LIMIT 1
+  [1m[36mActor Load (0.1ms)[0m  [1mSELECT "actors".* FROM "actors" WHERE "actors"."id" = 3 LIMIT 1[0m
+DEPRECATION WARNING: :confirm option is deprecated and will be removed from Rails 4.0. Use ':data => { :confirm => 'Text' }' instead. (called from block in _app_views_characters_index_html_erb___1524780788942961232_70115297395240 at /Users/rbetina/dev/app_scaffold/test1/app/views/characters/index.html.erb:53)
+  [1m[35mCACHE (0.0ms)[0m  SELECT "movies".* FROM "movies" WHERE "movies"."id" = 3 LIMIT 1
+  [1m[36mActor Load (0.1ms)[0m  [1mSELECT "actors".* FROM "actors" WHERE "actors"."id" = 4 LIMIT 1[0m
+DEPRECATION WARNING: :confirm option is deprecated and will be removed from Rails 4.0. Use ':data => { :confirm => 'Text' }' instead. (called from block in _app_views_characters_index_html_erb___1524780788942961232_70115297395240 at /Users/rbetina/dev/app_scaffold/test1/app/views/characters/index.html.erb:53)
+  Rendered characters/index.html.erb within layouts/application (55.6ms)
+Completed 200 OK in 115ms (Views: 103.9ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-07-23 18:21:37 -0500
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap_and_overrides.css?body=1" for 127.0.0.1 at 2012-07-23 18:21:37 -0500
+Served asset /bootstrap_and_overrides.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-transition.js?body=1" for 127.0.0.1 at 2012-07-23 18:21:37 -0500
+Served asset /twitter/bootstrap/bootstrap-transition.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-07-23 18:21:37 -0500
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-07-23 18:21:37 -0500
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-alert.js?body=1" for 127.0.0.1 at 2012-07-23 18:21:37 -0500
+Served asset /twitter/bootstrap/bootstrap-alert.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-modal.js?body=1" for 127.0.0.1 at 2012-07-23 18:21:37 -0500
+Served asset /twitter/bootstrap/bootstrap-modal.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-scrollspy.js?body=1" for 127.0.0.1 at 2012-07-23 18:21:37 -0500
+Served asset /twitter/bootstrap/bootstrap-scrollspy.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-dropdown.js?body=1" for 127.0.0.1 at 2012-07-23 18:21:37 -0500
+Served asset /twitter/bootstrap/bootstrap-dropdown.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tab.js?body=1" for 127.0.0.1 at 2012-07-23 18:21:37 -0500
+Served asset /twitter/bootstrap/bootstrap-tab.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tooltip.js?body=1" for 127.0.0.1 at 2012-07-23 18:21:37 -0500
+Served asset /twitter/bootstrap/bootstrap-tooltip.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-popover.js?body=1" for 127.0.0.1 at 2012-07-23 18:21:37 -0500
+Served asset /twitter/bootstrap/bootstrap-popover.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-button.js?body=1" for 127.0.0.1 at 2012-07-23 18:21:37 -0500
+Served asset /twitter/bootstrap/bootstrap-button.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-collapse.js?body=1" for 127.0.0.1 at 2012-07-23 18:21:37 -0500
+Served asset /twitter/bootstrap/bootstrap-collapse.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-carousel.js?body=1" for 127.0.0.1 at 2012-07-23 18:21:37 -0500
+Served asset /twitter/bootstrap/bootstrap-carousel.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap.js?body=1" for 127.0.0.1 at 2012-07-23 18:21:37 -0500
+Served asset /twitter/bootstrap.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-typeahead.js?body=1" for 127.0.0.1 at 2012-07-23 18:21:37 -0500
+Served asset /twitter/bootstrap/bootstrap-typeahead.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/actors.js?body=1" for 127.0.0.1 at 2012-07-23 18:21:37 -0500
+Served asset /actors.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap.js?body=1" for 127.0.0.1 at 2012-07-23 18:21:37 -0500
+Served asset /bootstrap.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/characters.js?body=1" for 127.0.0.1 at 2012-07-23 18:21:37 -0500
+Served asset /characters.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/directors.js?body=1" for 127.0.0.1 at 2012-07-23 18:21:37 -0500
+Served asset /directors.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/movies.js?body=1" for 127.0.0.1 at 2012-07-23 18:21:37 -0500
+Served asset /movies.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/favorites.js?body=1" for 127.0.0.1 at 2012-07-23 18:21:37 -0500
+Served asset /favorites.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2012-07-23 18:21:37 -0500
+Served asset /users.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-07-23 18:21:37 -0500
+Served asset /application.js - 304 Not Modified (1ms)
+
+
+Started GET "/movies" for 127.0.0.1 at 2012-07-23 18:21:38 -0500
+Processing by MoviesController#index as HTML
+  [1m[35mMovie Load (0.3ms)[0m  SELECT "movies".* FROM "movies" 
+  [1m[36mDirector Load (0.1ms)[0m  [1mSELECT "directors".* FROM "directors" WHERE "directors"."id" = 1 LIMIT 1[0m
+DEPRECATION WARNING: :confirm option is deprecated and will be removed from Rails 4.0. Use ':data => { :confirm => 'Text' }' instead. (called from block in _app_views_movies_index_html_erb___912859530480771883_70115294007680 at /Users/rbetina/dev/app_scaffold/test1/app/views/movies/index.html.erb:53)
+  [1m[35mCACHE (0.0ms)[0m  SELECT "directors".* FROM "directors" WHERE "directors"."id" = 1 LIMIT 1
+DEPRECATION WARNING: :confirm option is deprecated and will be removed from Rails 4.0. Use ':data => { :confirm => 'Text' }' instead. (called from block in _app_views_movies_index_html_erb___912859530480771883_70115294007680 at /Users/rbetina/dev/app_scaffold/test1/app/views/movies/index.html.erb:53)
+  [1m[36mDirector Load (0.2ms)[0m  [1mSELECT "directors".* FROM "directors" WHERE "directors"."id" = 3 LIMIT 1[0m
+DEPRECATION WARNING: :confirm option is deprecated and will be removed from Rails 4.0. Use ':data => { :confirm => 'Text' }' instead. (called from block in _app_views_movies_index_html_erb___912859530480771883_70115294007680 at /Users/rbetina/dev/app_scaffold/test1/app/views/movies/index.html.erb:53)
+  [1m[35mDirector Load (0.1ms)[0m  SELECT "directors".* FROM "directors" WHERE "directors"."id" = 2 LIMIT 1
+DEPRECATION WARNING: :confirm option is deprecated and will be removed from Rails 4.0. Use ':data => { :confirm => 'Text' }' instead. (called from block in _app_views_movies_index_html_erb___912859530480771883_70115294007680 at /Users/rbetina/dev/app_scaffold/test1/app/views/movies/index.html.erb:53)
+  Rendered movies/index.html.erb within layouts/application (31.0ms)
+Completed 200 OK in 48ms (Views: 45.8ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-07-23 18:21:38 -0500
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2012-07-23 18:21:38 -0500
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-transition.js?body=1" for 127.0.0.1 at 2012-07-23 18:21:38 -0500
+Served asset /twitter/bootstrap/bootstrap-transition.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-alert.js?body=1" for 127.0.0.1 at 2012-07-23 18:21:38 -0500
+Served asset /twitter/bootstrap/bootstrap-alert.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2012-07-23 18:21:38 -0500
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap_and_overrides.css?body=1" for 127.0.0.1 at 2012-07-23 18:21:38 -0500
+Served asset /bootstrap_and_overrides.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-scrollspy.js?body=1" for 127.0.0.1 at 2012-07-23 18:21:38 -0500
+Served asset /twitter/bootstrap/bootstrap-scrollspy.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-dropdown.js?body=1" for 127.0.0.1 at 2012-07-23 18:21:38 -0500
+Served asset /twitter/bootstrap/bootstrap-dropdown.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-modal.js?body=1" for 127.0.0.1 at 2012-07-23 18:21:38 -0500
+Served asset /twitter/bootstrap/bootstrap-modal.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tab.js?body=1" for 127.0.0.1 at 2012-07-23 18:21:38 -0500
+Served asset /twitter/bootstrap/bootstrap-tab.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-tooltip.js?body=1" for 127.0.0.1 at 2012-07-23 18:21:38 -0500
+Served asset /twitter/bootstrap/bootstrap-tooltip.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-button.js?body=1" for 127.0.0.1 at 2012-07-23 18:21:38 -0500
+Served asset /twitter/bootstrap/bootstrap-button.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-collapse.js?body=1" for 127.0.0.1 at 2012-07-23 18:21:38 -0500
+Served asset /twitter/bootstrap/bootstrap-collapse.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-popover.js?body=1" for 127.0.0.1 at 2012-07-23 18:21:38 -0500
+Served asset /twitter/bootstrap/bootstrap-popover.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-typeahead.js?body=1" for 127.0.0.1 at 2012-07-23 18:21:38 -0500
+Served asset /twitter/bootstrap/bootstrap-typeahead.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap/bootstrap-carousel.js?body=1" for 127.0.0.1 at 2012-07-23 18:21:38 -0500
+Served asset /twitter/bootstrap/bootstrap-carousel.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/twitter/bootstrap.js?body=1" for 127.0.0.1 at 2012-07-23 18:21:38 -0500
+Served asset /twitter/bootstrap.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/actors.js?body=1" for 127.0.0.1 at 2012-07-23 18:21:38 -0500
+Served asset /actors.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap.js?body=1" for 127.0.0.1 at 2012-07-23 18:21:38 -0500
+Served asset /bootstrap.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/characters.js?body=1" for 127.0.0.1 at 2012-07-23 18:21:38 -0500
+Served asset /characters.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/directors.js?body=1" for 127.0.0.1 at 2012-07-23 18:21:38 -0500
+Served asset /directors.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/favorites.js?body=1" for 127.0.0.1 at 2012-07-23 18:21:38 -0500
+Served asset /favorites.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/movies.js?body=1" for 127.0.0.1 at 2012-07-23 18:21:38 -0500
+Served asset /movies.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2012-07-23 18:21:38 -0500
+Served asset /users.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-07-23 18:21:38 -0500
+Served asset /application.js - 304 Not Modified (1ms)
